@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 .container {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -13,22 +12,27 @@
   width: 15%;
 }
 button {
+  background-color: #000000c5;
+  height: 20px;
   color: white;
-  background-color: black;
   padding: 20px;
+}
+button:hover {
+  box-shadow: 0px 5px 0px black;
 }
 header {
   font-size: 23px;
   padding: 15px;
-  height: 70px;
-  background-color: black;
+  height: 80%;
+  background-color: #000000c5;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .imagens {
-  width: 40vh;
-  height: 25vh;
+  border-radius: 20px;
+  width: 100%;
+  height: 60%;
 }
 nav {
   padding: 15px;
@@ -36,34 +40,106 @@ nav {
   text-align: center;
 }
 .itens {
-  width: 40vh;
+  border-radius: 20px;
+  width: 50vh;
   height: auto;
+  margin-left: 5%;
+}
+.itens:hover {
+  border: 2px solid black;
 }
 section {
-  width: 18%;
-  flex: 1 0 300px;
-  padding: 20px;
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(100px, auto);
 }
 .extras {
   width: 30vh;
   height: auto;
 }
 .imagensExtras {
-  width: 30vh;
-  height: 20vh;
+  width: 80%;
+  height: 22vh;
 }
 aside {
-  padding: 30px;
+  margin-left: 15%;
+  justify-content: center;
   text-align: center;
-  width: 20%;
   color: white;
-  background-color: black;
+  background-color: #000000c5;
+  display: grid;
+  grid-column: 4/5;
+  grid-row: 1/4;
 }
 footer {
-  height: 60px;
-  background-color: white;
-  border: 2px solid black;
+  font-size: 23px;
+  padding: 15px;
+  height: 80%;
+  color: white;
+  background-color: #000000c5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#voltar {
+  text-decoration: none;
+  color: white;
+}
+html {
+  scroll-behavior: auto;
+}
+:target {
+  scroll-margin-top: 0.3em;
+}
+@media (max-width: 1200px) {
+  section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  aside {
+    grid-column: 2/3;
+    grid-row: 4/7;
+  }
+  .itens {
+    width: 90%;
+    height: auto;
+    margin: 5%;
+  }
+  .logo {
+    width: 30%;
+  }
+}
+@media (max-width: 700px) {
+  section {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  aside {
+    grid-column: 1/2;
+    grid-row: 12/13;
+    margin-left: 0;
+  }
+  header {
+    height: auto;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .logo {
+    width: 80%;
+    margin-left: 9%;
+  }
+  .itens {
+    width: 90%;
+    height: auto;
+    margin: 5%;
+  }
+  footer {
+    height: auto;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: repeat(2, 1fr);
+    flex-direction: row-reverse;
+    border-top: 3px solid white;
+  }
 }
