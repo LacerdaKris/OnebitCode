@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.logo {
+  width: 15%;
+}
+button {
+  color: white;
+  background-color: black;
+  padding: 20px;
+}
+header {
+  font-size: 23px;
+  padding: 15px;
+  height: 70px;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.imagens {
+  width: 40vh;
+  height: 25vh;
+}
+nav {
+  padding: 15px;
+  font-size: 20px;
+  text-align: center;
+}
+.itens {
+  width: 40vh;
+  height: auto;
+}
+section {
+  width: 18%;
+  flex: 1 0 300px;
+  padding: 20px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.extras {
+  width: 30vh;
+  height: auto;
+}
+.imagensExtras {
+  width: 30vh;
+  height: 20vh;
+}
+aside {
+  padding: 30px;
+  text-align: center;
+  width: 20%;
+  color: white;
+  background-color: black;
+}
+footer {
+  height: 60px;
+  background-color: white;
+  border: 2px solid black;
+}
