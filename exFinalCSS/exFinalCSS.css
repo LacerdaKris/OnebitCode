@@ -74,7 +74,7 @@ aside {
   text-align: center;
   width: 30vh;
   height: auto;
-  cursos: pointer;
+  cursor: pointer;
   transition: 0.5s;
 }
 .extras:hover {
