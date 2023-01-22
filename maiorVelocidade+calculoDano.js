@@ -11,7 +11,7 @@ if (vel1 > vel2) {
   alert("Empate!");
 }
 
-/* const player1 = prompt("Nome do primeiro jogador:");
+const player1 = prompt("Nome do primeiro jogador:");
 const pontosataque = prompt("Poder de ataque:");
 const ataque = parseFloat(pontosataque);
 const player2 = prompt("Nome do segundo jogador:");
@@ -27,4 +27,3 @@ if (ataque > defesa && escudo == 2) {
   dano = (ataque - defesa) / 2;
 }
 alert("Dano causado:" + dano + "\n" + "Pontos de vida atual:" + (vida - dano));
-/*
