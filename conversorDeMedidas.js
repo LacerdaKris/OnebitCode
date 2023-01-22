@@ -11,27 +11,27 @@ let convertido = 0;
 switch (opção) {
   case 1:
     convertido = metros / 1000;
-    alert("O resultado é: " + convertido);
+    alert("O resultado é: " + metros + " m = " + convertido + " mm");
     break;
   case 2:
     convertido = metros / 100;
-    alert("O resultado é: " + convertido);
+    alert("O resultado é: " + metros + " m = " + convertido + " cm");
     break;
   case 3:
     convertido = metros / 10;
-    alert("O resultado é: " + convertido);
+    alert("O resultado é: " + metros + " m = " + convertido + " dm");
     break;
   case 4:
     convertido = metros / 0.1;
-    alert("O resultado é: " + convertido);
+    alert("O resultado é: " + metros + " m = " + convertido + " dam");
     break;
   case 5:
     convertido = metros / 0.01;
-    alert("O resultado é: " + convertido);
+    alert("O resultado é: " + metros + " m = " + convertido + " hm");
     break;
   case 6:
     convertido = metros / 0.001;
-    alert("O resultado é: " + convertido);
+    alert("O resultado é: " + metros + " m = " + convertido + " km");
     break;
   default:
     alert("Opção inválida");
