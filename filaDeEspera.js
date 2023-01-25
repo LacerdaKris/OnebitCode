@@ -22,8 +22,12 @@ do {
       pacientes.push(novo);
       break;
     case "2":
-      alert("Paciente chamado para consulta: " + pacientes[0]);
-      pacientes.shift();
+      const pacienteConsultado = fila.shift()
+      if (!pacienteConsultado) {
+        alert("Não há pacientes na fila!")
+      } else {
+        alert(pacienteConsultado + " foi removido da fila.")
+      }
       break;
     case "3":
       alert("Saindo...");
