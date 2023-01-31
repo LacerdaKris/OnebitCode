@@ -38,7 +38,7 @@ function novaVaga() {
 
 function listarVaga() {
   const vagasEmTexto = vagas.reduce((textoFinal, vaga, indice) => {
-    textoFinal += indice + ". ";
+    textoFinal += indice + 1 + ". ";
     textoFinal += vaga.nome;
     textoFinal += " (" + vaga.candidatos.length + " candidatos)\n";
     return textoFinal;
@@ -49,7 +49,7 @@ function listarVaga() {
 
 function verVaga() {
   const indice = prompt("Digite o número de índice da vaga: ");
-  const vaga = vagas[indice];
+  const vaga = vagas[indice - 1];
   const vagaEmTexto =
     "Nome: " +
     vaga.nome +
@@ -60,6 +60,47 @@ function verVaga() {
     "\nCandidatos: " +
     vaga.candidatos;
   alert(vagaEmTexto);
+}
+
+function inscreverCandidato() {
+  const candidato = prompt("Nome completo do(a) candidato(a): ");
+  const indice = prompt("Digite o número de índice da vaga: ");
+  const vaga = vagas[indice - 1];
+
+  const confirma = confirm(
+    "Confirma inscrição de " +
+      candidato +
+      "nesta vaga?\n Nome: " +
+      vaga.nome +
+      "\nDescrição: " +
+      vaga.descricao +
+      "\nData limite: " +
+      vaga.data +
+      "\nTotal de candidatos inscritos: " +
+      vaga.candidatos.length
+  );
+  if (confirma) {
+    vaga.candidatos.push(candidato);
+    alert("Inscrição realizada!");
+  }
+}
+
+function excluirVaga() {
+  const indice = prompt("Digite o número da vaga que deseja excluir: ");
+  const vaga = vagas[indice - 1];
+
+  const confirma = confirm(
+    "Confirma a exclusão da seguinte vaga?\n Nome: " +
+      vaga.nome +
+      "\nDescrição: " +
+      vaga.descricao +
+      "\nTotal de candidatos inscritos: " +
+      vaga.candidatos.length
+  );
+  if (confirma) {
+    vagas.splice(vaga, 1);
+    alert("Vaga excluída!");
+  }
 }
 
 const vagas = [];
@@ -79,10 +120,10 @@ function executar() {
         verVaga();
         break;
       case "4":
-        //pedir o nome do candidato, o índice da vaga e então uma confirmação exibindo as informações da vaga antes de salvar o candidato na vaga.
+        inscreverCandidato();
         break;
       case "5":
-        //deve pedir o índice da vaga, mostrar suas informações e pedir que o usuário confirme a exclusão da vaga antes de realmente exclui-la.
+        excluirVaga();
         break;
       case "6":
         alert("Saindo...");
@@ -91,21 +132,3 @@ function executar() {
 }
 
 executar();
-
-//preenchido para testes
-const vagas = [
-  {
-    nome: "vendedor",
-    descricao: "vendas internas e orçamentos",
-    data: 25 / 02,
-    candidatos: ["fulano", "ciclano", "beltrano"],
-    total: 3,
-  },
-  {
-    nome: "auxiliar adm",
-    descricao: "agendamentos, arquivos e rotinas adm",
-    data: 25 / 02,
-    candidatos: ["mariazinha"],
-    total: 1,
-  },
-];
