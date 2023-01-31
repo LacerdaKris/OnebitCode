@@ -47,15 +47,19 @@ function listarVaga() {
   alert(vagasEmTexto);
 }
 
-function verVaga(indice) {
-  const vaga = vagas[indice]((textoFinal, vaga, indice) => {
-    textoFinal += indice + ". ";
-    textoFinal += vaga.nome;
-    textoFinal += " (" + vaga.candidatos.length + " candidatos)\n";
-    return textoFinal;
-  }, "");
-
-  alert(vagasEmTexto);
+function verVaga() {
+  const indice = prompt("Digite o número de índice da vaga: ");
+  const vaga = vagas[indice];
+  const vagaEmTexto =
+    "Nome: " +
+    vaga.nome +
+    "\nDescrição: " +
+    vaga.descricao +
+    "\nData limite: " +
+    vaga.data +
+    "\nCandidatos: " +
+    vaga.candidatos;
+  alert(vagaEmTexto);
 }
 
 const vagas = [];
@@ -72,7 +76,7 @@ function executar() {
         novaVaga();
         break;
       case "3":
-        verVaga(prompt("Digite o número de índice da vaga: "));
+        verVaga();
         break;
       case "4":
         //pedir o nome do candidato, o índice da vaga e então uma confirmação exibindo as informações da vaga antes de salvar o candidato na vaga.
@@ -87,3 +91,21 @@ function executar() {
 }
 
 executar();
+
+//preenchido para testes
+const vagas = [
+  {
+    nome: "vendedor",
+    descricao: "vendas internas e orçamentos",
+    data: 25 / 02,
+    candidatos: ["fulano", "ciclano", "beltrano"],
+    total: 3,
+  },
+  {
+    nome: "auxiliar adm",
+    descricao: "agendamentos, arquivos e rotinas adm",
+    data: 25 / 02,
+    candidatos: ["mariazinha"],
+    total: 1,
+  },
+];
