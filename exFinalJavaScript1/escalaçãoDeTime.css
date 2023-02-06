@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+}
+header {
+  background-color: #ad80d8;
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: 50px;
+  border-style: solid;
+  border-color: rgb(122, 79, 161);
+}
+button {
+  padding: 6px;
+  cursor: pointer;
+}
+button:hover {
+  border-color: #ad80d8;
+}
