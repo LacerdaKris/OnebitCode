@@ -82,7 +82,6 @@ function cadastrarTecnologia(ev) {
   });
 
   //Incluir tecnologia ao dev
-
   formulario.addEventListener("submit", function (ev) {
     ev.preventDefault();
     const nome = document.querySelector("input[id='nome']").value;
@@ -98,19 +97,19 @@ function cadastrarTecnologia(ev) {
     let devs = [];
     const tecnologia =
       nomeTecnologia + " Experiência: " + tempoExperiencia + "\n";
-    if (confirma) {
-      const dev = {};
-      if (nome in devs.forEach) {
-        devs[nomeDev === nome].tecnologia += tecnologia;
-      } else {
-        dev.nomeDev = nome;
-        dev.tecnologia = tecnologia;
-        devs.push(dev);
-      }
-      document.querySelector("input[name='tecnologia']").value = "";
-      document.querySelector("input[name='tempo']").value = "";
-
-      console.log(devs);
+    const existeNome = devs.some((dev) => dev.nomeDev === nome);
+    console.log(existeNome);
+    if (existeNome) {
+      const tecnologiaExiste = devs.some(
+        (dev) => dev.nomeDev === nome && dev.tecnologia.includes(nomeTecnologia)
+      );
+    } else {
+      let dev = { nomeDev: nome, tecnologia: tecnologia };
+      devs.push(dev);
     }
+    document.querySelector("input[name='tecnologia']").value = "";
+    document.querySelector("input[name='tempo']:checked").value = "";
+
+    console.log(devs);
   });
 }
