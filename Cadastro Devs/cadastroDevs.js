@@ -85,30 +85,31 @@ function cadastrarTecnologia(ev) {
 
   formulario.addEventListener("submit", function (ev) {
     ev.preventDefault();
-    const form = ev.currentTarget.parentNode;
     const nome = document.querySelector("input[id='nome']").value;
+    const nomeTecnologia = document.querySelector(
+      "input[name='tecnologia']"
+    ).value;
     const tempoExperiencia = document.querySelector(
-      "input[name='tempo']:checked".value
-    );
+      "input[name='tempo']:checked"
+    ).value;
     const confirma = confirm(
       "Você confirma a inclusão de " + nomeInput.value + " para " + nome + "?"
     );
-    let devs = {};
-
+    let devs = [];
+    const tecnologia =
+      nomeTecnologia + " Experiência: " + tempoExperiencia + "\n";
     if (confirma) {
-      if (nome in devs) {
-        devs.dev =
-          "\nTecnologia: " +
-          nomeInput.value +
-          " Experiência: " +
-          tempoExperiencia;
+      const dev = {};
+      if (nome in devs.forEach) {
+        devs[nomeDev === nome].tecnologia += tecnologia;
       } else {
-        devs.dev =
-          "\nTecnologia: " +
-          nomeInput.value +
-          " Experiência: " +
-          tempoExperiencia;
+        dev.nomeDev = nome;
+        dev.tecnologia = tecnologia;
+        devs.push(dev);
       }
+      document.querySelector("input[name='tecnologia']").value = "";
+      document.querySelector("input[name='tempo']").value = "";
+
       console.log(devs);
     }
   });
