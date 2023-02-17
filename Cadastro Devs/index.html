@@ -14,9 +14,20 @@
       <hr />
     </header>
     <section>
-      <label for="nome">Nome completo do Desenvolvedor: </label>
-      <input type="text" name="nome" id="nome" />
-      <button id="add-button">Adicionar tecnologia</button>
+      <h3>Cadastrar Novo Desenvolvedor:</h3>
+      <br />
+      <form id="devform">
+        <label for="fullname">Nome completo: </label>
+        <input type="text" name="fullname" id="fullname" />
+        <br /><br />
+
+        <label>Tecnologias:</label>
+        <button type="button" id="add-button">Adicionar Nova</button>
+        <ul id="stackinputs"></ul>
+        <br />
+
+        <button type="submit">CADASTRAR</button>
+      </form>
     </section>
   </body>
 </html>
