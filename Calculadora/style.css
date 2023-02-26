@@ -5,11 +5,12 @@
 }
 
 :root {
-  --bg-color: black;
+  --bg-color: #000000e8;
   --border-color: gray;
-  --font-color: white;
+  --font-color: #ffffffc7;
   --primary-color: #f35cda;
   --error-color: red;
+  --success-color: #2bf32b;
 }
 
 body {
@@ -107,23 +108,17 @@ input {
   width: 6rem;
 }
 
-.flex {
+#barraInferior {
+  align-items: center;
+  justify-content: space-between;
   display: flex;
 }
 
-.align-center {
-  align-items: center;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.error {
+.erro {
   background-color: var(--error-color);
 }
 
-.success {
-  border-color: var(--primary-color) !important;
-  color: var(--primary-color) !important;
+.sucesso {
+  border-color: var(--success-color) !important;
+  color: var(--success-color) !important;
 }
