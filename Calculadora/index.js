@@ -55,6 +55,10 @@ document.getElementById("C").addEventListener("click", function () {
   input.focus();
   resultado.value = "";
   resultado.classList.remove("erro");
+  //voltar ao normal o botão "copiar", caso esteja como "copiado"
+  const copiar = document.getElementById("copiar")
+  copiar.innerText = "Copiar";
+  copiar.classList.remove("sucesso");
 });
 
 //ativar botão "="
