@@ -12,7 +12,7 @@ header {
   justify-content: center;
   display: flex;
   color: black;
-  -webkit-text-stroke: 1px #ca7397;
+  -webkit-text-stroke: 1px #f5f4d3;
 }
 
 body{
@@ -43,7 +43,7 @@ form {
 }
 
 #iniciar {
-  background-color: rgb(234, 223, 206);
+  background-color: rgb(243, 232, 217);
 }
 
 #jogo{
