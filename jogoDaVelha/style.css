@@ -42,6 +42,10 @@ form {
   justify-items: center;
 }
 
+#iniciar {
+  background-color: rgb(234, 223, 206);
+}
+
 #jogo{
   padding: 25px;
   display: flex;
