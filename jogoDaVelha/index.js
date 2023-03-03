@@ -1,11 +1,11 @@
-const inputnome1 = document.getElementById("nome1").value;
-const inputnome2 = document.getElementById("nome2").value;
 let simbolo1 = document.querySelector("input[name='simbolo1']");
 let simbolo2 = document.querySelector("input[name='simbolo2']");
-const jogo = document.getElementById("jogo");
+const jogo = document.getElementById("areaIniciar");
 const quadrantes = document.querySelectorAll("button[class='botões']");
 const radios = document.querySelectorAll("input[type='radio']");
 //começar com opções radio marcadas, clicando pode trocar
+simbolo1.value = "X";
+simbolo2.value = "O";
 document.getElementById("simboloX1").checked = true;
 document.getElementById("simboloO2").checked = true;
 
@@ -14,6 +14,7 @@ radios.forEach(function (radio) {
   radio.addEventListener("click", function () {
     //pra cada opção radio clicada, seleciona o oposto no outro jogador
     if (radio.id === "simboloX1") {
+      simbolo1.value = "X";
       simbolo2.value = "O";
       document.getElementById("simboloO2").checked = true;
     } else if (radio.id === "simboloO1") {
@@ -22,6 +23,7 @@ radios.forEach(function (radio) {
       document.getElementById("simboloX2").checked = true;
     } else if (radio.id === "simboloX2") {
       simbolo1.value = "O";
+      simbolo2.value = "X";
       document.getElementById("simboloO1").checked = true;
     } else if (radio.id === "simboloO2") {
       simbolo1.value = "X";
@@ -34,46 +36,55 @@ radios.forEach(function (radio) {
 const iniciar = document.getElementById("iniciar");
 //seleciona o botão iniciar e adiciona revezamento de qual jogador é a vez
 iniciar.addEventListener("click", function () {
-  //se ambos inputs estiverem preenchidos, seguir execução, se não, alertar
+  const inputnome1 = document.getElementById("nome1").value;
+  const inputnome2 = document.getElementById("nome2").value;
+  //se ambos inputs estiverem preenchidos, seguir execução do jogo
   if (inputnome1 !== "" && inputnome2 !== "") {
-    jogo.removeChild(iniciar);
-    jogador1.style.setProperty("border-color", "#ca7397");
-    let jogada = jogador1;
-    //seleciona ouvinte aos botões quadrantes do jogo da velha
-    quadrantes.forEach(function (quadrante) {
-      quadrante.addEventListener("click", function () {
-        if (jogada === jogador1) {
-          quadrante.innerText = simbolo1.value;
-          jogador1.style.setProperty("border-color", "white");
-          jogador2.style.setProperty("border-color", "#ca7397");
-          jogada = jogador2;
-        } else {
-          quadrante.innerText = simbolo2.value;
-          jogador1.style.setProperty("border-color", "#ca7397");
-          jogador2.style.setProperty("border-color", "white");
-          jogada = jogador1;
-        }
-
-        const vencedor = verificaGanhador();
-        if (vencedor !== null) {
-          alert("O jogador ${vencedor} venceu!");
-          limparJogo();
-        }
-        //verifica se todos os quadrantes foram preenchidos
-        if (botõespreenchidos()) {
-          const confirma = alert("Fim da partida!\nDeseja jogar novamente?");
-          if (confirma) {
-            limparJogo();
-          }
-        }
-      });
-    });
+    jogar();
   } else {
     alert("Nomes devem estar preenchidos para jogar");
   }
 });
 
-//verifica se todos os botões do jogo têm innerText preenchido
+//execução do jogo
+function jogar() {
+  jogo.removeChild(iniciar);
+  jogador1.style.setProperty("border-color", "#ca7397");
+  let jogada = jogador1;
+  //seleciona ouvinte aos botões quadrantes do jogo da velha
+  quadrantes.forEach(function (quadrante) {
+    quadrante.addEventListener("click", function () {
+      if (jogada === jogador1) {
+        quadrante.innerText = simbolo1.value;
+        jogador1.style.setProperty("border-color", "white");
+        jogador2.style.setProperty("border-color", "#ca7397");
+        jogada = jogador2;
+      } else {
+        quadrante.innerText = simbolo2.value;
+        jogador1.style.setProperty("border-color", "#ca7397");
+        jogador2.style.setProperty("border-color", "white");
+        jogada = jogador1;
+      }
+
+      //verifica após cada clique se há vencedor
+      const vencedor = verificaGanhador();
+      if (vencedor !== null) {
+        alert("O jogador ${vencedor} venceu!");
+        limparJogo();
+      }
+
+      //verifica se todos os quadrantes foram preenchidos
+      if (botõespreenchidos()) {
+        const confirma = alert("Fim da partida!\nDeseja jogar novamente?");
+        if (confirma) {
+          limparJogo();
+        }
+      }
+    });
+  });
+}
+
+//verifica se todos os botões do jogo tem innerText preenchido
 function botõespreenchidos() {
   for (let i = 0; i < quadrantes.length; i++) {
     if (quadrantes[i].innerText === "") {
@@ -107,6 +118,9 @@ function verificaGanhador() {
       quadrantes[b].innerText === quadrantes[c].innerText
     ) {
       //há um ganhador
+      quadrantes[a].style.setProperty("background-color", "#426ce8");
+      quadrantes[b].style.setProperty("background-color", "#426ce8");
+      quadrantes[c].style.setProperty("background-color", "#426ce8");
       return quadrantes[a].innerText;
     }
   }
@@ -122,5 +136,6 @@ function limparJogo() {
   jogo.appendChild(botãoIniciar);
   quadrantes.forEach(function (quadrante) {
     quadrante.innerText = "";
+    quadrantes[quadrante].style.setProperty("background-color", "white");
   });
 }
